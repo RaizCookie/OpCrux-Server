@@ -61,7 +61,7 @@ std::vector<Entity::GameObject*> ObjectsManager::GetObjectsInGroup(std::u16strin
 	for (auto oPair : object_list) {
 		if (oPair.second->IsWithinGroup(groupName)) {
 
-			if (ignoreSelf != 0ULL && oPair.second->GetObjectID() == ignoreSelf) continue;
+			if (ignoreSelf != std::uint64_t(0) && oPair.second->GetObjectID() == ignoreSelf) continue;
 			if (ignoreSpawners && oPair.second->GetLOT() == 176) continue;
 			if (oPair.second == nullptr) continue;
 

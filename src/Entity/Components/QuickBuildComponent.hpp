@@ -189,7 +189,7 @@ public:
 
 		// Make Activator
 		activator = new Entity::GameObject(ScriptedActivityComponent::owner->GetZoneInstance(), 6604);
-		activator->SetObjectID(DataTypes::LWOOBJID((1ULL << 58) + 104120439353844ULL + ScriptedActivityComponent::owner->GetZoneInstance()->spawnedObjectIDCounter++));
+		activator->SetObjectID(DataTypes::LWOOBJID((std::uint64_t(1) << 58) + std::uint64_t(104120439353844) + ScriptedActivityComponent::owner->GetZoneInstance()->spawnedObjectIDCounter++));
 		ScriptedActivityComponent::owner->AddChild(activator);
 		//activator->isSerializable = true;
 		activator->SetPosition(rebuild_activators);

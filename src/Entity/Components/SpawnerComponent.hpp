@@ -226,7 +226,7 @@ public:
 		}
 
 		// Set ObjectID
-		spawnedObject->SetObjectID(DataTypes::LWOOBJID((1ULL << 58) + 104120439353844ULL + Instance->spawnedObjectIDCounter++));
+		spawnedObject->SetObjectID(DataTypes::LWOOBJID((std::uint64_t(1) << 58) + std::uint64_t(104120439353844) + Instance->spawnedObjectIDCounter++));
 		//spawnedObject->SetObjectID(DataTypes::LWOOBJID(288334496658198694ULL + Instance->spawnedObjectIDCounter++));
 
 		// Set Scale

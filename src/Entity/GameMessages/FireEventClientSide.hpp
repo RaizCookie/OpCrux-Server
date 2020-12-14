@@ -19,10 +19,15 @@ namespace GM {
 
 		void Serialize(RakNet::BitStream* bs) {
 			GM_VAR_SERIALIZE_WSTRING(bs, args);
+			Logger::log("DBG", "Serialized 1/5");
 			GM_VAR_SERIALIZE(bs, object);
+			Logger::log("DBG", "Serialized 2/5");
 			GM_VAR_SERIALIZE_WITH_DEFAULT(bs, param1, std::int64_t(0));
+			Logger::log("DBG", "Serialized 3/5");
 			GM_VAR_SERIALIZE_WITH_DEFAULT(bs, param2, std::int32_t(-1));
+			Logger::log("DBG", "Serialized 4/5");
 			GM_VAR_SERIALIZE(bs, senderID);
+			Logger::log("DBG", "Serialized 5/5");
 		}
 
 	};

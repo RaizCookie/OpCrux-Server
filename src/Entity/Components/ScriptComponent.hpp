@@ -64,7 +64,7 @@ public:
 	void OnEnable() {
 		std::uint32_t compID = GetComponentID();
 		scriptName = CacheScriptComponent::GetScriptName(compID);
-
+		//transform(scriptName.begin(), scriptName.end(), scriptName.begin(), ::tolower);
 		if (/*scriptName == ("ScriptComponent_" + std::to_string(compID) + "_script_name__removed") && */factories.find(scriptName) == factories.end()) {
 			scriptName = "";
 		}
@@ -123,7 +123,7 @@ public:
 			instance->onUse(owner, *msg);
 	}
 
-	void OnTimerDone(std::pair<std::u16string, long long> timer) {
+	void OnTimerDone(std::pair<std::u16string, std::int64_t> timer) {
 		if (instance)
 			instance->onTimerDone(owner, TimerDone(timer.first));
 	}

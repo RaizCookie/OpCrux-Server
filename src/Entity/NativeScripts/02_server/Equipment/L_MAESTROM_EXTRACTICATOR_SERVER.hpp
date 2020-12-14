@@ -82,7 +82,7 @@ public:
 	//----------------------------------------------------------------
 	std::float_t playAnimAndReturnTime(Entity::GameObject* self, std::u16string animID) {
 		// Get the anim time
-		auto animTimer = 4.0f;
+		std::float_t animTimer = 4.0f;
 
 		// If we have an animation play it
 		if (animTimer > 0) {

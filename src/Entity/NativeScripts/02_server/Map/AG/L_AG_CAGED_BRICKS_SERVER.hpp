@@ -19,15 +19,33 @@ public:
 
 	void onUse(Entity::GameObject* self, GM::RequestUse msg) {
 		auto spiderObj = self->GetZoneInstance()->objectsManager->GetObjectsInGroup(spiderGroup, self->GetObjectID(), true);
-
+	
+		Logger::log("SCRPT", "CAGED_BRICKS ");
 		for (auto obj : spiderObj) {
 			if (obj != nullptr) {
+				Logger::log("SCRPT", "NO NULLPOINTER!");
 				// tell the spider to show up
-				{ GM::FireEventClientSide nmsg; nmsg.args = u"toggle"; nmsg.senderID = msg.user->GetObjectID(); GameMessages::Send(msg.user, obj->GetObjectID(), nmsg); }
+				{
+					GM::FireEventClientSide nmsg;
+					Logger::log("SCRPT", "Declared FireEventClientSide");
+					nmsg.args = u"toggle";
+					Logger::log("SCRPT", "Defined args");
+					nmsg.senderID = msg.user->GetObjectID();
+					std::string objid = "OBJID:";
+					std::ostringstream o;
+					o << std::uint64_t(msg.user->GetObjectID()) << "  ObjOfObjID:" << std::uint64_t(obj->GetObjectID()); //Debug stuff
+					objid += o.str();
+					Logger::log("SCRPT", "Got ObjectID " + objid);
+					GameMessages::Send(msg.user, obj->GetObjectID(), nmsg);
+					Logger::log("SCRPT", "Sent GameMessage");
+				}
+				Logger::log("SCRPT", "SPIDER SHOWUP");
 				// set the mission player flag
 				msg.user->GetComponent<CharacterComponent>()->SetFlag(flagID, true);
+				Logger::log("SCRPT", "FLAG SET");
 				// Player has completed the mission, remove necessary items
 				msg.user->GetComponent<InventoryComponent>()->RemoveItem2(invenItem, 1);
+				Logger::log("SCRPT", "REMOVED ITEM");
 			}
 		}
 
